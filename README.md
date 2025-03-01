@@ -30,7 +30,7 @@ How to Get
 HQNN-Amine program is available through the repositories hosted on
 github ( https://github.com/hclim0213/HQNN-Amine )
 
-To check out the latest DIGERA sources:
+To check out the HQNN-Amine sources:
 
    `$ git clone https://github.com/hclim0213/HQNN-Amine HQNN_Amine`
 
