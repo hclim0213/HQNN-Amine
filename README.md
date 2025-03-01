@@ -20,7 +20,10 @@ funded by the Ministry of Science and ICT (RS-2023-00257288).
 Prerequisites
 -------------
 * LINUX/UNIX Cluster Machines
-* Python
+* Python 3.10
+* Pennylane 0.38.0
+* Pytorch 2.4.0
+* pip package: numpy (1.26.4), matplotlib (3.9.2), pandas (2.2.2), qiskit (1.2.0), sklearn (1.5.1), scipy (1.14.1), seaborn (0.13.2), ibm-cloud-sdk-core (3.20.6), ibm-platform-services (0.57.0), qiskit-aer (0.15.0), qiskit-ibm-provider (0.11.0), qiskit-ibm-runtime (0.29.0)
 
 How to Get
 ----------
