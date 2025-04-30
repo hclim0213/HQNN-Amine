@@ -25,6 +25,8 @@ def cli():
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--fold-col", default="cv_fold")
     p.add_argument("--target",   default="y")
+    p.add_argument("--learning-rate",type=float,default=1e-3,help="Learning rate for finetuning")
+    p.add_argument("--dropout-rate",type=float,default=0.1,help="Dropout rate for the classical layers")
     return p.parse_args()
 
 def main():
@@ -64,9 +66,9 @@ def main():
     param_grid = {
         "hidden_sizes":[hidden],
         "batch_size"  :[128],
-        "learning_rate":[1e-3],
+        "learning_rate":[args.learning_rate],
         "num_epochs"  :[args.epochs],
-        "dropout_rate":[0.1],
+        "dropout_rate":[args.dropout_rate],
         "n_qubit"     :[args.n_qubits],
         "n_layer"     :[args.n_layers],
         "device_type" :[args.device_type],
