@@ -25,6 +25,7 @@ def cli():
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--fold-col", default="cv_fold")
     p.add_argument("--target",   default="y")
+    p.add_argument("--drop-columns",default="",help="Comma-separated list of columns to drop before modeling")
     p.add_argument("--learning-rate",type=float,default=1e-3,help="Learning rate for finetuning")
     p.add_argument("--dropout-rate",type=float,default=0.1,help="Dropout rate for the classical layers")
     return p.parse_args()
@@ -33,16 +34,20 @@ def main():
     args = cli()
     ensure_dir(args.save_dir)
 
-    # 1) data
+    if args.drop_columns:
+        drop_cols = [c.strip() for c in args.drop_columns.split(",")]
+    else:
+        drop_cols = [args.target, args.fold_col]
+        
     X, y, y_scaled, folds, scaler = load_and_preprocess_data(
         args.data,
-        drop_columns=[args.target, args.fold_col],
+        drop_columns=drop_cols,
         target_column=args.target,
         scale_target=True,
     )
     ps = PredefinedSplit(folds)
 
-    # 2) load the pretrained classical backbone
+    #load the pretrained classical backbone
     hidden = [int(h) for h in args.hidden_sizes.split(",")]
     backbone: Classical = load_model(
         model_class = Classical,
@@ -62,7 +67,7 @@ def main():
 
     pretrained_models = [backbone]   # same model reused across folds
 
-    # 3) assemble a single-combo param grid
+    # assemble a single-combo param grid
     param_grid = {
         "hidden_sizes":[hidden],
         "batch_size"  :[128],
