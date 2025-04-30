@@ -76,9 +76,6 @@ def train_and_evaluate(model, train_dataloader, val_dataloader, optimizer, loss_
         # Training phase
         train_start_time = time.time()
         model.train()
-        print(model)
-        for name, param in model.named_parameters():
-            print(f"Layer: {name}, Weights Mean: {param.mean().item()}, Std: {param.std().item()}")
         train_loss =0 
         for data, target, _ in train_dataloader:
             data, target = data.to(device), target.to(device)
@@ -91,14 +88,11 @@ def train_and_evaluate(model, train_dataloader, val_dataloader, optimizer, loss_
 
             output = output.view(-1)
             target = target.float().view(-1)
-            print(f"Using loss function: {loss_func}")
 
             loss = loss_func(output, target)
             loss.backward()
             optimizer.step()
             train_loss += loss.item()
-            print(f"Epoch {epoch+1}/{num_epochs}, "
-                  f"batch_loss: {loss.item():.4f}, ")
             
         train_end_time = time.time()
         train_duration = train_end_time - train_start_time
