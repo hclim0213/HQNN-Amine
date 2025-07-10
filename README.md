@@ -3,11 +3,9 @@
 
 **Hybrid Quantum Neural Networks with Variational Quantum Regressor** are one of iterative quantum neural network (QNN) algorithms in quantum machine learning (QML) to enhacne quantitative structure-property relationship (QSPR) modeling for CO<sub>2</sub>-captuing amine solvents.
 
-All source codes will be uploaded after acceptance.
-
 Contact Person
 --------------
-* Ms. Hyein Cho (hicho@bmdrc.org)
+* Dr. Hyein Cho (hicho@bmdrc.org)
 * Mr. Jeonghoon Kim (jhkim@bmdrc.org)
 * Dr. Hocheol Lim (ihc0213@yonsei.ac.kr)
 
@@ -36,4 +34,4 @@ To check out the HQNN-Amine sources:
 
 How to Cite
 ----------
-Hyein Cho, Jeonghoon Kim, and Hocheol Lim. "Hybrid Quantum Neural Networks with Variational Quantum Regressor for Enhancing QSPR Modeling of CO2-Capturing Amine"
+Hyein Cho, Jeonghoon Kim, Kyoung Tai No, and Hocheol Lim. (2025). Hybrid quantum neural networks with variational quantum regressor for enhancing QSPR modeling of CO2-capturing amine. EPJ Quantum Technology, 12(1), 1-18.
